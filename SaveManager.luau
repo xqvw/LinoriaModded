@@ -225,7 +225,7 @@ local SaveManager = {} do
 
 			Options.SaveManager_ConfigList:SetValues(self:RefreshConfigList())
 			Options.SaveManager_ConfigList:SetValue(nil)
-		end):AddButton('Load config', function()
+		end):AddButton('load config', function()
 			local name = Options.SaveManager_ConfigList.Value
 
 			local success, err = self:Load(name)
@@ -258,22 +258,22 @@ local SaveManager = {} do
 				return;
 			end;
 			writefile(self.Folder .. '/settings/autoload.txt', name)
-			SaveManager.AutoloadLabel:SetText('Current autoload config: ' .. name)
+			SaveManager.AutoloadLabel:SetText('current autoload config: ' .. name)
 			self.Library:Notify(string.format('Set %q to auto load', name))
-		end):AddButton('Remove autoload', function()
+		end):AddButton('remove autoload', function()
 			local name = Options.SaveManager_ConfigList.Value
 			if (isfile(self.Folder .. '/settings/autoload.txt')) then
 				delfile(self.Folder .. '/settings/autoload.txt');
 			end;
-			SaveManager.AutoloadLabel:SetText('Current autoload config: none')
+			SaveManager.AutoloadLabel:SetText('current autoload config: none')
 			self.Library:Notify("removed autoload");
 		end)
 
-		SaveManager.AutoloadLabel = section:AddLabel('Current autoload config: none', true)
+		SaveManager.AutoloadLabel = section:AddLabel('current autoload config: none', true)
 
 		if isfile(self.Folder .. '/settings/autoload.txt') then
 			local name = readfile(self.Folder .. '/settings/autoload.txt')
-			SaveManager.AutoloadLabel:SetText('Current autoload config: ' .. name)
+			SaveManager.AutoloadLabel:SetText('current autoload config: ' .. name)
 		end
 
 		SaveManager:SetIgnoreIndexes({ 'SaveManager_ConfigList', 'SaveManager_ConfigName' })
