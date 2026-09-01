@@ -32,10 +32,10 @@ local Library = {
 	HudRegistry = {};
 
 	FontColor = Color3.fromRGB(255, 255, 255);
-	MainColor = Color3.fromRGB(30, 30, 30);
-	BackgroundColor = Color3.fromRGB(25, 25, 25);
-	AccentColor = Color3.fromRGB(110, 155, 200);
-	OutlineColor = Color3.fromRGB(40, 40, 40);
+	MainColor = Color3.fromRGB(24, 24, 24);
+	BackgroundColor = Color3.fromRGB(20, 20, 20);
+	AccentColor = Color3.fromRGB(70, 120, 180);
+	OutlineColor = Color3.fromRGB(31, 31, 31);
 	RiskColor = Color3.fromRGB(255, 50, 50),
 	Black = Color3.new(0, 0, 0);
 	Font = Enum.Font.Code,
@@ -48,7 +48,7 @@ local Library = {
 	};
 
 	KeypickerListVisible = true;
-	KeypickerListMode = "All"; -- // Active, Toggled, All
+	KeypickerListMode = "All"; -- // Active, Toggled, Alls
 	Events = {};
 	Signals = {};
 	ScreenGui = ScreenGui;
