@@ -74,11 +74,11 @@ local ThemeManager = {} do
 	end
 
 	function ThemeManager:CreateThemeManager(groupbox)
-		groupbox:AddLabel('Background color'):AddColorPicker('BackgroundColor', { Default = self.Library.BackgroundColor, Title = 'Background color', });
-		groupbox:AddLabel('Main color'):AddColorPicker('MainColor', { Default = self.Library.MainColor, Title = 'Main color' });
-		groupbox:AddLabel('Accent color'):AddColorPicker('AccentColor', { Default = self.Library.AccentColor, Title = 'Accent color' });
-		groupbox:AddLabel('Outline color'):AddColorPicker('OutlineColor', { Default = self.Library.OutlineColor, Title = 'Outline Color' });
-		groupbox:AddLabel('Font color'):AddColorPicker('FontColor', { Default = self.Library.FontColor, Title = 'Font Color' });
+		groupbox:AddLabel('background color'):AddColorPicker('BackgroundColor', { Default = self.Library.BackgroundColor, Title = 'background color', });
+		groupbox:AddLabel('main color'):AddColorPicker('MainColor', { Default = self.Library.MainColor, Title = 'main color' });
+		groupbox:AddLabel('accent color'):AddColorPicker('AccentColor', { Default = self.Library.AccentColor, Title = 'accent color' });
+		groupbox:AddLabel('outline color'):AddColorPicker('OutlineColor', { Default = self.Library.OutlineColor, Title = 'outline Color' });
+		groupbox:AddLabel('font color'):AddColorPicker('FontColor', { Default = self.Library.FontColor, Title = 'font Color' });
 
 		local ThemesArray = {}
 		for Name, Theme in next, self.BuiltInThemes do
@@ -87,9 +87,9 @@ local ThemeManager = {} do
 
 		table.sort(ThemesArray, function(a, b) return self.BuiltInThemes[a][1] < self.BuiltInThemes[b][1] end)
 
-		groupbox:AddDropdown('ThemeManager_ThemeList', { Text = 'Theme list', Values = ThemesArray, Default = 1 })
+		groupbox:AddDropdown('ThemeManager_ThemeList', { Text = 'theme list', Values = ThemesArray, Default = 1 })
 
-		groupbox:AddButton('Set as default', function()
+		groupbox:AddButton('set as default', function()
 			self:SaveDefault(Options.ThemeManager_ThemeList.Value)
 			self.Library:Notify(string.format('Set default theme to %q', Options.ThemeManager_ThemeList.Value))
 		end)
@@ -99,16 +99,16 @@ local ThemeManager = {} do
 		end)
 
 		groupbox:AddInput('ThemeManager_CustomThemeName', {
-			Text = 'Custom Theme Name'
+			Text = 'custom theme name'
 		})
 		groupbox:AddDropdown('ThemeManager_CustomThemeList', {
-			Text = 'Custom Themes',
+			Text = 'custom themes',
 			Values = self:ReloadCustomThemes(),
 			AllowNull = true,
 			Default = 1
 		})
 		
-		groupbox:AddButton('Save theme', function() 
+		groupbox:AddButton('save theme', function() 
 			self:SaveCustomTheme(Options.ThemeManager_CustomThemeName.Value)
 
 			Options.ThemeManager_CustomThemeList:SetValues(self:ReloadCustomThemes())
@@ -117,12 +117,12 @@ local ThemeManager = {} do
 			self:ApplyTheme(Options.ThemeManager_CustomThemeList.Value) 
 		end)
 
-		groupbox:AddButton('Refresh list', function()
+		groupbox:AddButton('refresh list', function()
 			Options.ThemeManager_CustomThemeList:SetValues(self:ReloadCustomThemes())
 			Options.ThemeManager_CustomThemeList:SetValue(nil)
 		end)
 
-		groupbox:AddButton('Set as default', function()
+		groupbox:AddButton('set as default', function()
 			if Options.ThemeManager_CustomThemeList.Value ~= nil and Options.ThemeManager_CustomThemeList.Value ~= '' then
 				self:SaveDefault(Options.ThemeManager_CustomThemeList.Value)
 				self.Library:Notify(string.format('Set default theme to %q', Options.ThemeManager_CustomThemeList.Value))
