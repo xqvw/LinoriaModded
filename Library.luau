@@ -3618,6 +3618,12 @@ function Library:CreateWindow(...)
 		Parent = Inner;
 	});
 
+
+	Library:AddToRegistry(VersionLabel, {
+		TextColor3 = "AccentColor";
+	});
+
+
 	local MainSectionOuter = Library:Create('Frame', {
 		BackgroundColor3 = Library.BackgroundColor;
 		BorderColor3 = Library.OutlineColor;
